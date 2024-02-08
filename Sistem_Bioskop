@@ -1,0 +1,289 @@
+package Sistem_Bioskop;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Comparator;
+
+/**
+ *
+ * @author TUBAGUS BUDI S
+ */
+
+class Sistem_Bioskop {
+    
+     public static int linearSearch(int arr[], int elementToSearch) {
+        
+        for (int index = 0; index < arr.length; index++) {
+            
+            if (arr[index] == elementToSearch) {
+                return index;
+            }
+            
+        }
+        
+        return -1;
+        
+    }
+    
+    
+    public static void main(String[] args) {
+        
+        Scanner input = new Scanner (System.in);
+    
+        int tiketfilm1 = 30000;
+        int tiketfilm2 = 35000;
+        int tiketfilm3 = 40000;
+        
+        
+    // --- Record --- //   
+        
+    
+        record film (String film, String judulfilm, String gendrefilm, String jamtayang, String studiofilm, String hargatiket, String nokursi) {}
+        record kursibioskop (String kursi, String nokursi) {}
+        record peserta (String namapeserta, String kontak, int idcard) {}
+        record Pemilihanfilm (String namapeserta, int idcard, String pilihfilm, String judulfilm, String gendrefilm, String jamtayang, String studiofilm, String hargatiket, String nokursi, int bayar, int totalharga, int kembalian) {}
+        record transaksi (int bayar, int totalharga){}
+      
+        
+    // --- Array --- //
+ 
+    
+    film[] listfilm = new film[3];
+        listfilm[0] = new film ("1", "HINDIANA JONES", "ADVENTURE", "13.00 WIB", "1","Rp.30000","A1 - A5");
+        listfilm[1] = new film ("2", "FAST & FORIOUS", "ACTION", "15.00 WIB","2","Rp.35000","B1 - B5");
+        listfilm[2] = new film ("3", "THE NUN", "HOROR", "17.00 WIB", "3","Rp.40000","C1 - C5");
+    
+        
+    String[][] kursibioskop = {{"A1", "A2", "A3", "A4", "A5"},
+                              {"B1", "B2", "B3", "B4", "B5"},
+                              {"C1", "C2", "C3", "C4", "C5"}};
+                            
+    
+    
+    peserta[] pesertanya = new peserta[3];
+        pesertanya[0] = new peserta ("Lina","088",123);
+        pesertanya[1] = new peserta ("Lolita","089",234);
+        pesertanya[2] = new peserta ("Juki","087",345);
+    
+        
+     
+        System.out.println("-------------------------------- Selamat Datang Di Bioskop TBXXI -------------------------------------------");
+        System.out.println("");
+        System.out.println("----------------------------- Daftar Film Yang Tersedia & Sudah Rilis --------------------------------------");
+        System.out.println("");
+        
+        for (film jadwal : listfilm) {
+            System.out.println("Pilihan: " + jadwal.film + " | Judul Film: " + jadwal.judulfilm + " | Gendre Film: " + jadwal.gendrefilm
+            + " | Jam Tayang: " + jadwal.jamtayang + " | Studio Film: " + jadwal.studiofilm + " | Harga Tiket: " + jadwal.hargatiket);
+        }
+        System.out.println("");
+        System.out.println("------------------------------------------------------------------------------------------------------------");
+        System.out.println("");
+        
+        
+        System.out.println("");
+        System.out.println("| - Pencarian Film - |");
+        System.out.println("");
+        
+        String[] film1 = {
+            "HINDIANA JONES",
+            "FAST FORIOUS",
+            "THE NUN"
+        };
+        
+        
+    // --- Searching --- //
+    
+    
+        int detect = 0;
+        String cari;
+        for(int i = 0; i < film1.length; i++){
+            System.out.println((i+1) + ". " + film1[i]);
+        }
+    
+        System.out.println("----------------------");
+        System.out.print("Cari : ");
+        cari = input.nextLine();
+        for (int i = 0; i < film1.length; i++){
+            if(cari.equalsIgnoreCase(film1[i])){
+                System.out.println("Pilihan Film " + (i+1));
+                detect++;
+            }
+        }
+        if (detect == 0){
+            System.out.println("Pilihan Film Yang Dicari Tidak Ada/Belum Rilis !!!");
+  
+        }
+       
+        
+        System.out.println("");
+        System.out.println("");
+        
+        
+    // --- Queue --- // 
+    
+    
+         Queue<peserta> antrianPeserta = new LinkedList<>();
+        for (int i = 0; i < pesertanya.length; i++) {
+            antrianPeserta.add(pesertanya[i]);
+        }
+
+    // --- LinkedList--- //
+        
+        
+        LinkedList<Pemilihanfilm> listPemilihanFilmLina = new LinkedList<>();
+        LinkedList<Pemilihanfilm> listPemilihanFilmLolita = new LinkedList<>();
+        LinkedList<Pemilihanfilm> listPemilihanFilmJuki = new LinkedList<>();
+
+        while (!antrianPeserta.isEmpty()) {
+            peserta peserta = antrianPeserta.poll();
+            System.out.println("");
+            System.out.println("Nama: " + peserta.namapeserta() + ", ID Card: " + peserta.idcard());
+            System.out.print("Pesan Tiket (Y/T): ");
+            String pilih = input.nextLine();
+
+            if (pilih.equalsIgnoreCase("Y")) { 
+                System.out.print("Masukkan Pilihan Film: ");
+                String film = input.nextLine();
+
+                boolean filmDitemukan = false;
+                int indexFilm = -1;
+
+                for (int i = 0; i < listfilm.length; i++) {
+                    if (listfilm[i].film.equals(film)) {
+                        filmDitemukan = true;
+                        indexFilm = i;
+                        break;
+                    }
+                }
+
+                if (filmDitemukan) {
+                    System.out.println("Judul Film                         : " + listfilm[indexFilm].judulfilm());
+                    System.out.println("Genre Film                         : " + listfilm[indexFilm].gendrefilm());
+                    System.out.println("Jam Tayang                         : " + listfilm[indexFilm].jamtayang());
+                    System.out.println("Studio Film                        : " + listfilm[indexFilm].studiofilm());
+                    System.out.println("Harga Tiket                        : " + listfilm[indexFilm].hargatiket());
+                    System.out.println("No Kursi                           : " + listfilm[indexFilm].nokursi());
+
+                    int totalHarga = 0;
+
+                    switch (indexFilm) {
+                        case 0:
+                            totalHarga = tiketfilm1;
+                            break;
+                        case 1:
+                            totalHarga = tiketfilm2;
+                            break;
+                        case 2:
+                            totalHarga = tiketfilm3;
+                            break;
+                    }
+
+                    System.out.print("Masukan Nominal Uang Yang Dibayar  : ");
+                    int bayar = input.nextInt();
+                    int kembalian = bayar - totalHarga;
+
+                    if (bayar < totalHarga) {
+                        System.out.println("Maaf, uangnya kurang               : " + bayar);
+                    } else {
+                        System.out.println("Total Kembalian                    : " + kembalian);
+                        
+                        Pemilihanfilm riwayat = new Pemilihanfilm(
+                                peserta.namapeserta(),
+                                peserta.idcard(),
+                                listfilm[indexFilm].film(),
+                                listfilm[indexFilm].judulfilm(),
+                                listfilm[indexFilm].gendrefilm(),
+                                listfilm[indexFilm].jamtayang(),
+                                listfilm[indexFilm].studiofilm(),
+                                listfilm[indexFilm].hargatiket(),
+                                listfilm[indexFilm].nokursi(),
+                                bayar, totalHarga, kembalian);
+
+                        if (peserta.namapeserta().equals("Lina")) {
+                            listPemilihanFilmLina.add(riwayat);
+                        } else if (peserta.namapeserta().equals("Lolita")) {
+                            listPemilihanFilmLolita.add(riwayat);
+                        } else if (peserta.namapeserta().equals("Juki")) {
+                            listPemilihanFilmJuki.add(riwayat);
+                        }
+
+                        System.out.println("-------------------------------------------");   
+                        System.out.println("");
+                              System.out.println("| =============== Riwayat Transaksi =============== |");
+
+                        if (peserta.namapeserta().equals("Lina")) {
+                            for (Pemilihanfilm riwayatTransaksi : listPemilihanFilmLina) {
+                                System.out.println("| Nama Peserta                     : " + riwayatTransaksi.namapeserta() );
+                                System.out.println("| Id Card                          : " + riwayatTransaksi.idcard() ); 
+                                System.out.println("| Judul Film                       : " + riwayatTransaksi.pilihfilm());
+                                System.out.println("| Genre Film                       : " +  riwayatTransaksi.gendrefilm());
+                                System.out.println("| Jam Tayang                       : " + riwayatTransaksi.jamtayang());
+                                System.out.println("| Studio Film                      : " + riwayatTransaksi.studiofilm() );
+                                System.out.println("| No Kursi Tersedia                : " + riwayatTransaksi.nokursi());
+                                System.out.println("| Harga Tiket                      : " + riwayatTransaksi.hargatiket());
+                                System.out.println("| Total Bayar                      : " + bayar );
+                                System.out.println("| Kembalian                        : " + kembalian);
+                                System.out.println("--------------------------------------------------");
+                            }
+                        } else if (peserta.namapeserta().equals("Lolita")) {
+                            for (Pemilihanfilm riwayatTransaksi : listPemilihanFilmLolita) {
+                                System.out.println("| Nama Peserta                     : " + riwayatTransaksi.namapeserta() );
+                                System.out.println("| Id Card                          : " + riwayatTransaksi.idcard() ); 
+                                System.out.println("| Judul Film                       : " + riwayatTransaksi.pilihfilm());
+                                System.out.println("| Genre Film                       : " + riwayatTransaksi.gendrefilm());
+                                System.out.println("| Jam Tayang                       : " + riwayatTransaksi.jamtayang());
+                                System.out.println("| Studio Film                      : " + riwayatTransaksi.studiofilm() );
+                                System.out.println("| No Kursi Tersedia                : " + riwayatTransaksi.nokursi());
+                                System.out.println("| Harga Tiket                      : " + riwayatTransaksi.hargatiket());
+                                System.out.println("| Total Bayar                      : " + bayar );
+                                System.out.println("| Kembalian                        : " + kembalian);
+                              System.out.println("----------------------------------------------------");
+                            }
+                        } else if (peserta.namapeserta().equals("Juki")) {
+                            for (Pemilihanfilm riwayatTransaksi : listPemilihanFilmJuki) {
+                                System.out.println("| Nama Peserta                     : " + riwayatTransaksi.namapeserta() );
+                                System.out.println("| Id Card                          : " + riwayatTransaksi.idcard() ); 
+                                System.out.println("| Judul Film                       : " + riwayatTransaksi.pilihfilm());
+                                System.out.println("| Genre Film                       : " + riwayatTransaksi.gendrefilm());
+                                System.out.println("| Jam Tayang                       : " + riwayatTransaksi.jamtayang());
+                                System.out.println("| Studio Film                      : " + riwayatTransaksi.studiofilm() );
+                                System.out.println("| No Kursi Tersedia                : " + riwayatTransaksi.nokursi());
+                                System.out.println("| Harga Tiket                      : " + riwayatTransaksi.hargatiket());
+                                System.out.println("| Total Bayar                      : " + bayar );
+                                System.out.println("| Kembalian                        : " + kembalian);
+                                System.out.println("--------------------------------------------------");
+                            }
+                            
+                            //break; 
+                        }
+
+                        System.out.println("");
+
+                        System.out.print("apakah ingin melanjutkan antrian ? (Y/T): ");
+                        input.nextLine();
+                        String kembali = input.nextLine();
+
+                        if (kembali.equalsIgnoreCase("Y")) { 
+                            System.out.println("Silahkan untuk memilih kembali.");
+                        } else {
+                            System.out.println(" ----- Terima kasih ----- ");
+                            //break;
+                        }
+                    }
+                
+                    
+                } else {
+                    System.out.println(" Film yang Anda pilih tidak ada !!! ");
+                }
+                
+            } else {
+                System.out.println(" ----- Terima Kasih ----- ");
+                break;
+            
+                
+            }
+        }
+    }
+}
