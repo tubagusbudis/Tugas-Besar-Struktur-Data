@@ -15,7 +15,7 @@ Struktur Data Sistem Bioskop
   <ul>
     <li>Ketua: <a href="">RIFKI FEBRIAN</a></li>
     <li>Anggota 1: <a href="">MUHAMAD AL GHOZALI</a></li>
-    <li>Anggota 2: <a href="">=TUBAGUS BUDI SAMPURNO</a></li>
+    <li>Anggota 2: <a href="">TUBAGUS BUDI SAMPURNO</a></li>
   </ul>
 </ul>
 
@@ -34,6 +34,6 @@ Penjelasan Muhamad Al Ghozali</p>
 
 ## Demo Proyek
 <ul>
-  <li>Github: <a href="">Github</a></li>
+  <li>Github: <a href="">https://github.com/tubagusbudis/Tugas-Besar-Struktur-Data</a></li>
   <li>Youtube: <a href="">Youtube</a></li>
 </ul>
