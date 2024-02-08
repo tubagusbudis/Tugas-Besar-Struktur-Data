@@ -9,7 +9,7 @@ Struktur Data Sistem Bioskop
 
 ## Kelompok
 <ul>
-  <li>Kelompok:  kelompok 9 </li>
+  <li>Kelompok:  kelompok 11 </li>
   <li>Proyek:  Sistem Bioskop </li>
   <li>Anggota: </li>
   <ul>
