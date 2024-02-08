@@ -23,6 +23,8 @@ Struktur Data Sistem Bioskop
 <p>Sistem Bioskop</p>
 
 ## Penjelasan Proyek
+<P>-</P>
+## Komponen Proyek
 <ul>
 <li>	Record, Program mendefinisikan beberapa jenis record (film, kursibioskop, peserta, Pemilihanfilm, transaksi) untuk memodelkan berbagai aspek dari proses pemesanan bioskop. Record-record ini menggabungkan berbagai informasi seperti detail film, informasi kursi, detail peserta, dan riwayat transaksi.</li>
 <li>	Metode Utama, Dalam metode utama, program dimulai dengan menginisialisasi harga tiket untuk tiga film. Kemudian, program membuat array untuk menyimpan daftar film yang tersedia, susunan kursi, dan detail peserta.</li>
@@ -34,8 +36,6 @@ Struktur Data Sistem Bioskop
 <li>	Opsi Lanjutan, Setelah memproses pemesanan peserta, mereka diberi opsi untuk melanjutkan dengan pemesanan lain atau keluar dari sistem.</li>
 <li>	Pencarian Linear, Meskipun tidak digunakan dalam bagian utama program, ada metode linearSearch yang didefinisikan di bagian atas kelas. Metode ini melakukan pencarian linear pada array integer untuk elemen tertentu dan mengembalikan indeksnya jika ditemukan, atau -1 jika tidak ditemukan.</li>
 </ul>
-## Komponen Proyek
-<p>Record, Array, Searching, Queue, LinkedList</p>
 
 ## Pembagian Tim
 <p>Membuat Kode/Koding : Tubagus Budi Sampurno, Rifki Febrian<br>
