@@ -29,8 +29,8 @@ Struktur Data Sistem Bioskop
 <p>Record, Array, Searching, Queue, LinkedList</p>
 
 ## Pembagian Tim
-<p>Membuat Kode/Koding: Tubagus Budi Sampurno, Rifki Febrian<br>
-Penjelasan Koding: Muhamad Al Ghozali</p>
+<p>Membuat Kode/Koding : Tubagus Budi Sampurno, Rifki Febrian<br>
+Penjelasan Koding : Muhamad Al Ghozali</p>
 
 ## Demo Proyek
 <ul>
